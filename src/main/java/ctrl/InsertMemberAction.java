@@ -2,35 +2,31 @@ package ctrl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import member.MemberDAO;
 import member.MemberVO;
 
-public class LoginAction implements Action{
+public class InsertMemberAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session = request.getSession();
 		ActionForward forward = null;
 		MemberVO vo = new MemberVO();
 		MemberDAO dao = new MemberDAO();
-		String paramMid=request.getParameter("sessionMid");
+		
+		String paramMid=request.getParameter("mid");
 		String paramMpw=request.getParameter("mpw");
-		String paramCnt=request.getParameter("cnt");
-
+		String paramMname=request.getParameter("mname");
+		
 		vo.setMid(paramMid);
 		vo.setMpw(paramMpw);
-
-		request.setAttribute("cnt", paramCnt);
-		vo = dao.selectOne(vo);
-		if(vo != null) {
-			session.setAttribute("mVO", vo); // 로그인한 회원정보
+		vo.setMname(paramMname);
+		if(dao.insert(vo)) {
 			forward=new ActionForward();
-			forward.setPath("main.do");
+			forward.setPath("/close.jsp");
 			forward.setRedirect(true);
 		}else {
-			request.setAttribute("errormsg", "로그인실패");
+			request.setAttribute("errormsg", "회원가입실패");
 		}
 		return forward;
 	}

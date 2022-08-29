@@ -10,21 +10,20 @@ public class FavAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ActionForward forward=null;
-		
+		ActionForward forward = null;
 		BoardDAO dao=new BoardDAO();
 		BoardVO vo=new BoardVO();
-		vo.setBid(Integer.parseInt(request.getParameter("bid")));
-		if(dao.update(vo)){
+		String paramBid=request.getParameter("bid");
+		String paramCnt=request.getParameter("cnt");
+		vo.setBid(Integer.parseInt(paramBid));
+		request.setAttribute("cnt", paramCnt);
+		if(dao.update(vo)) {
 			forward=new ActionForward();
 			forward.setPath("main.do");
 			forward.setRedirect(false);
+		}else {
+			request.setAttribute("errormsg", "추천실패");
 		}
-		else{
-			throw new Exception("fav 오류");
-		}
-		
 		return forward;
-	}
-
+	}	
 }

@@ -9,7 +9,7 @@
 <body>
 
 <h1>요청하신 페이지를 찾을 수 없습니다...</h1>
-<a href="ctrlB.jsp?action=main">메인으로 돌아가기</a>
+<a href="main.do">메인으로 돌아가기</a>
 
 </body>
 </html>

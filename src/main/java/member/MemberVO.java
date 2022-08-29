@@ -1,9 +1,16 @@
 package member;
 
-public class MemberVO {
+public class MemberVO {		
+	private int mpk;
 	private String mid;
 	private String mpw;
 	private String mname;
+	public int getMpk() {
+		return mpk;
+	}
+	public void setMpk(int mpk) {
+		this.mpk = mpk;
+	}
 	public String getMid() {
 		return mid;
 	}
@@ -24,6 +31,7 @@ public class MemberVO {
 	}
 	@Override
 	public String toString() {
-		return "MemberVO [mid=" + mid + ", mpw=" + mpw + ", mname=" + mname + "]";
+		return "MemberVO [mpk=" + mpk + ", mid=" + mid + ", mpw=" + mpw + ", mname=" + mname + "]";
 	}
+
 }

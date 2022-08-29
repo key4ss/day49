@@ -9,9 +9,9 @@
 <body>
 
 <h1>요청하신 서비스를 처리하던중에 문제가 발생했습니다...</h1>
-<a href="ctrlB.jsp?action=main">메인으로 돌아가기</a>
+<a href="main.do">메인으로 돌아가기</a>
 <hr>
-발생한 예외: ${pageContext.errorData.throwable}
+발생한 예외: ${errormsg}
 
 </body>
 </html>

@@ -3,8 +3,9 @@
 
 <%@ attribute name="midCheck" %>
 <%@ attribute name="bid" %>
+<%@ attribute name="cnt" %>
 
-<c:if test="${mid==midCheck}">
-<a href="deleteB.do?bid=${bid}">[삭제]</a>
+<c:if test="${mVO.mid==midCheck}">
+<a href="deleteB.do?bid=${bid}&cnt=${cnt}">[삭제]</a>
 </c:if>
-<a href="fav.do?bid=${bid}">&nbsp;♥</a>
+<a href="fav.do?bid=${bid}&cnt=${cnt}">&nbsp;♥</a>

@@ -4,24 +4,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.BoardDAO;
-import board.BoardVO;
+import board.ReplyVO;
 
-public class DeleteBAction implements Action{
+public class DeleteReplyAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward=null;
 		
 		BoardDAO dao=new BoardDAO();
-		BoardVO vo=new BoardVO();
-		vo.setBid(Integer.parseInt(request.getParameter("bid")));
-		if(dao.delete(vo)){
+		ReplyVO vo=new ReplyVO();
+		vo.setRid(Integer.parseInt(request.getParameter("rid")));
+		if(dao.deleteR(vo)){
 			forward=new ActionForward();
 			forward.setPath("main.do");
-			forward.setRedirect(true);
+			forward.setRedirect(false);
 		}
 		else{
-			throw new Exception("deleteB 오류");
+			throw new Exception("deleteR 오류");
 		}
 		
 		return forward;

@@ -3,7 +3,9 @@
 
 <%@ attribute name="midCheck" %>
 <%@ attribute name="rid" %>
+<%@ attribute name="bid" %>
+<%@ attribute name="cnt" %>
 
-<c:if test="${mid==midCheck}">
-<a href="deleteR.do?rid=${rid}">[삭제]</a>
+<c:if test="${mVO.mid==midCheck}">
+<a href="deleteB.do?rid=${rid}&bid=${bid}&cnt=${cnt}">[삭제]</a>
 </c:if>

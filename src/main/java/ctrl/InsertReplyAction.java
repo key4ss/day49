@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import board.BoardDAO;
 import board.ReplyVO;
 
-public class DeleteRAction implements Action{
+public class InsertReplyAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -14,14 +14,16 @@ public class DeleteRAction implements Action{
 		
 		BoardDAO dao=new BoardDAO();
 		ReplyVO vo=new ReplyVO();
-		vo.setRid(Integer.parseInt(request.getParameter("rid")));
-		if(dao.deleteR(vo)){
+		vo.setBid(Integer.parseInt(request.getParameter("bid")));
+		vo.setMid(request.getParameter("mid"));
+		vo.setRmsg(request.getParameter("rmsg"));
+		if(dao.insertR(vo)){
 			forward=new ActionForward();
 			forward.setPath("main.do");
 			forward.setRedirect(false);
 		}
 		else{
-			throw new Exception("deleteR 오류");
+			throw new Exception("insertR 오류");
 		}
 		
 		return forward;
